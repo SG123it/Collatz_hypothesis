@@ -28,15 +28,18 @@ int main(){
 
     }
 
-
+    
     char action = ' ';
-    std::cout << "\n\nProgram finished successful! Do you want to save results history to file?\n[1] - YES\n[2] - NO\n";
-    std::cout << ">>> ";
-    std::cin >> action;
-    if(std::cin.fail()) return 1; //выход из программы / ошибка ввода
+    while (true) {
+        std::cout << "\n\nProgram finished successful! Do you want to save results history to file?\n[1] - YES\n[2] - NO\n";
+        std::cout << ">>> ";
+        std::cin >> action;
+        if(std::cin.fail()) continue; //выход из программы / ошибка ввода
+        break;
+    }
 
     //если action == '2' программа просто переходит в конец и выводит текст 'Thank you for using my program :)'
-    else if (action == '1') {
+    if (action == '1') {
 
         std::fstream file("CH_results_history.txt", std::ios::out | std::ios::trunc);
         if (!file.is_open()) {
@@ -47,8 +50,6 @@ int main(){
 
         file << std::endl << "-----------------------------" << std::endl;
         file << "written number: " << number << std::endl;
-
-        file << "all Results history:" << std::endl;
         for (unsigned long long int el : results_history) {
             file << el << std::endl;
         }
