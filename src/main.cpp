@@ -48,7 +48,6 @@ int main(){
         }
             
 
-        file << std::endl << "-----------------------------" << std::endl;
         file << "written number: " << number << std::endl;
         for (unsigned long long int el : results_history) {
             file << el << std::endl;
