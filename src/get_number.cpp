@@ -12,9 +12,9 @@ unsigned long long int get_number() {
     std::cout << "\nPlease enter the number(natural) \n";
     std::cout << "\nTemplate: '10' - checking whether \nthe number 10 confirms the Collatz hypothesis.\n";
     std::cout << "\n|-----------------------------------|\n";
-    std::cout << "P.S. your number must be no more than " << std::numeric_limits<unsigned long long>::max() << " | System limit";
+    std::cout << "P.S. your number must be no more than " << std::numeric_limits<unsigned long long>::max();
 
-    while (true){
+    while (true) {
         try {
 
             std::cout << "\n\n>>> ";

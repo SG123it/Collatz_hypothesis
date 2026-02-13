@@ -8,7 +8,7 @@
 #include "algorithm_start.hpp"
 
 int main(){
-    unsigned long long int number = 0.0;
+    unsigned long long int number = 0;
     std::vector<unsigned long long int> results_history;
 
 
@@ -38,7 +38,7 @@ int main(){
     //если action == '2' программа просто переходит в конец и выводит текст 'Thank you for using my program :)'
     else if (action == '1') {
 
-        std::fstream file("CH_results_history.txt", std::ios::out | std::ios::app);
+        std::fstream file("CH_results_history.txt", std::ios::out | std::ios::trunc);
         if (!file.is_open()) {
             std::cout << "Unable to open CH_results_history.txt";
             return 1; //выход из программы
