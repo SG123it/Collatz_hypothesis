@@ -8,6 +8,7 @@ public:
         default_mode,
         enumeration_mode
     };
+    
     SEARCH_MODE search_mode = SEARCH_MODE::default_mode;
     int cycles_limit = 1000000;
 

@@ -5,8 +5,9 @@
 #include <filesystem>
 
 #include "algorithm_start\algorithm_start.hpp"
+#include "arguments.hpp"
 
-int main(){
+int main(int argc, char* argv){
     std::vector<unsigned long long int> numbers;
     std::vector<unsigned long long int> all_results;
     algorithm_start start;
@@ -14,13 +15,12 @@ int main(){
     std::cout << "************************************************\n";
     std::cout << "https://github.com/SG123it/Collatz_hypothesis\n";
     std::cout << "Version: ";
-
     #ifdef PROGRAM_VERSION
         std::cout << PROGRAM_VERSION << std::endl;
     #else
         std::cout << "UNKNOWN " << std::endl;
     #endif
-
+    std::cout << "Search mode: " << start.search_mode << std::endl;
     std::cout << "Cycles limit: " << start.cycles_limit;
 
     std::cout << "\n************************************************\n\n\n";
