@@ -21,7 +21,7 @@ int main(){
         std::cout << "UNKNOWN " << std::endl;
     #endif
 
-    std::cout << "Cycles limit: " << start.cycles_limit << std::endl;
+    std::cout << "Cycles limit: " << start.cycles_limit;
 
     std::cout << "\n************************************************\n\n\n";
 
@@ -52,7 +52,7 @@ int main(){
         break;
     }
 
-    std::cout << "\n\n\n\n\n";
+    std::cout << "\n************************************************\n";
     std::cout << "All results: \n\n";
     for (int i = 0; i < numbers.size(); i++) {
         std::cout << "result[" << numbers[i] << "] : " << all_results[i] << std::endl;
