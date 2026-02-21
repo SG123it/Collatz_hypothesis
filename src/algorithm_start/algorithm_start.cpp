@@ -4,20 +4,21 @@
 
 #include "algorithm_start.hpp"
 
-std::vector<unsigned long long int> algorithm_start::launch(const std::vector<unsigned long long int> *numbers) {
-    std::vector<unsigned long long int> all_results; //Результат всех чисел из вектора
+algorithm_start::all_program_return algorithm_start::launch(const std::vector<unsigned long long int> *numbers) {
+    all_program_return return_info;
 
     for (unsigned long long int number : *numbers){
-        const unsigned long long int default_number = number;
+
+        const unsigned long long int default_number = number; //Хранит изначальное число без изменений
         int cycle_counter = 0; //счётчик цикла
-        while(number != 1 || cycle_counter != cycles_limit) { //Когда станет 1 цикл пойдёт по кругу
+
+        while(number != 1 && cycle_counter != cycles_limit) { //Когда станет 1 цикл пойдёт по кругу
             cycle_counter++;
             
             std::cout << "[" << default_number << "] : " << "Cycle #" << cycle_counter << " ";
             
             if (number % 2 == 1) number = (number * 3) + 1;
             else number = (number / 2);
-            
 
             std::cout << "Result: " << number << std::endl;
         }
@@ -26,10 +27,13 @@ std::vector<unsigned long long int> algorithm_start::launch(const std::vector<un
 
         if (number == 1) std::cout << "Number: " << number << " : Does not confirm collatz hypothesis";
         else std::cout << "Number: " << number << " : confirm collatz hypothesis";
-        all_results.push_back(number);
+
+        return_info.all_results.push_back(number); //Запись итогового числа в вектор
+        return_info.all_cycles.push_back(cycle_counter); //Запись количества циклов в вектор
 
         std::cout << "\n-------------------------------------\n";
+
     }
     
-    return all_results;
+    return return_info;
 }
