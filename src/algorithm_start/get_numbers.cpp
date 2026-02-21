@@ -3,25 +3,35 @@
 #include <string>
 #include <limits>
 
-#include "headers/get_numbers.hpp"
+#include "algorithm_start.hpp"
 
-std::vector<unsigned long long int> get_numbers(SEARCH_MODE mode) {
+std::vector<unsigned long long int> algorithm_start::get_numbers() {
     std::vector<unsigned long long int> result;
 
-    std::cout << "\n|-----------------------------------|\n";
-    if (mode == SEARCH_MODE::default_mode) {
-        std::cout << "\nPlease enter the number(or numbers)\n";
-        std::cout << "\nTemplate: '10'";
-        std::cout << "\nTemplate: '10 20 30'";
+    if (search_mode == SEARCH_MODE::default_mode) {
+        std::cout << R"(
+                        ------------------
+                        |  Default mode  |
+            -----------------------------------------------
+            | Please enter the number or numbers(natural) |
+            | Template: 10"                               |
+            | Template: 10 20 30                          |
+            -----------------------------------------------
+        )";
     }
-    else if (mode == SEARCH_MODE::enumeration_mode) {
-        std::cout << "\nPlease enter the number or numbers multiples of two (enumeration_mode enable)\n";
-        std::cout << "\nTemplate: '10 100' - enumeration from 10 to 100";
-        std::cout << "\nTemplate: '10 20 30 50' - enumeration from 10 to 20, and from 30 to 50\n";
-        std::cout << "if you writed that not multiples of two program ignored number!";
+    else if (search_mode == SEARCH_MODE::enumeration_mode) {
+        std::cout << R"(
+                        ----------------------
+                        |  Enumeration mode  |
+            -----------------------------------------------
+            | Please enter the number or numbers(natural) |
+            | Template: 10"                               |
+            | Template: 10 20 30 40                       |
+            -----------------------------------------------
+    if you write numbers that not multiples of two program ignored number!
+        )";
     }
-    std::cout << "\n|-----------------------------------|\n";
-    std::cout << "P.S. your number must be no more than " << std::string("").max_size() << " : symbols\n\n";
+    std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << "\nand no less than: " << std::numeric_limits<unsigned long long>::min();
     
     std::cout << ">>> ";
     std::cin.ignore();
@@ -42,18 +52,20 @@ std::vector<unsigned long long int> get_numbers(SEARCH_MODE mode) {
 
     }
 
-    if (mode == SEARCH_MODE::enumeration_mode && (raw_result.size()) % 2 == 1) raw_result.pop_back(); //если размер массива не кратен 2 
+    if (search_mode == SEARCH_MODE::enumeration_mode && (raw_result.size()) % 2 == 1) raw_result.pop_back(); //если размер массива не кратен 2 
     if (raw_result.empty()) {
         std::cerr << "Error: Result is empty.\n";
         throw "Error: Result is empty.";
         
     }
 
+    //----------------------
+
     for (std::string el : raw_result) {
         if (!el.empty()) result.push_back(std::stoull(el)); //если вылезет исключение main.cpp его поймает
     }
 
-    if (mode == SEARCH_MODE::enumeration_mode) {
+    if (search_mode == SEARCH_MODE::enumeration_mode) {
         const std::vector<unsigned long long int> vector_copy = result;
         result.clear(); //Перезапись вектора
 

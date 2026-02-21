@@ -2,9 +2,17 @@
 #include <iostream>
 #include <vector>
 
-class algotithm_start {
-private:
-    //...
-protected:
-    std::vector<unsigned long long int> launch(const unsigned long long int *number);
-}
+class algorithm_start {
+public:
+    enum SEARCH_MODE {
+        default_mode,
+        enumeration_mode
+    };
+    SEARCH_MODE search_mode = SEARCH_MODE::default_mode;
+
+    //Начать выполнение алгоритма : функция возвращает результаты алгоритма
+    std::vector<unsigned long long int> launch(const std::vector<unsigned long long int> *numbers);
+    
+    //Получить числа
+    std::vector<unsigned long long int> get_numbers();
+};

@@ -4,8 +4,7 @@
 #include <fstream>
 #include <filesystem>
 
-#include "headers/get_number.hpp"
-#include "headers/algorithm_start.hpp"
+#include "algorithm_start\algorithm_start.hpp"
 
 int main(){
     unsigned long long int number = 0;
@@ -28,18 +27,8 @@ int main(){
             std::system("cls");
         #endif
 
-        std::cout << R"(
-            -----------------------------------------------
-            | Please enter the number or numbers(natural) |
-            | Template: 10"                               |
-            | Template: 10 20 30                          |
-            -----------------------------------------------
-        )";
-        std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << "\nand no less than: " << std::numeric_limits<unsigned long long>::min();
-
         try { //Если в ходе выполнения 2 функций ниже возникнет ошибка то программа перезапускается по нажатию клавиши
-            number = get_number();
-            results_history = algorithm_start(&number);
+
         }
         catch(...) {
             std::cout << "Unknown error. Please press enter to restart";

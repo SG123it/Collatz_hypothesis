@@ -5,8 +5,8 @@ project(collatz_hypothesis VERSION ${PROJECT_VERSION})
 
 set(SRC
     src/main.cpp
-    src/get_number.cpp
-    src/algorithm_start.cpp
+    src/algorithm_start/get_numbers.cpp
+    src/algorithm_start/algorithm_start.cpp
 )
 
 add_executable(program ${SRC})
