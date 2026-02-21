@@ -32,6 +32,7 @@ int main(){
         try { //Если в ходе выполнения функции ниже возникнет ошибка то программа перезапускается по нажатию клавиши
 
             numbers = start.get_numbers();
+
             all_results = start.launch(&numbers);
 
         }
@@ -50,9 +51,10 @@ int main(){
 
     }
 
-    std::cout << "All results: \n";
+    std::cout << "\n\n\n\n\n";
+    std::cout << "All results: \n\n";
     for (int i = 0; i < numbers.size(); i++) {
-        std::cout << "result[" << numbers[i] << "] : " << all_results[i];
+        std::cout << "result[" << numbers[i] << "] : " << all_results[i] << std::endl;
     }
 
     std::cout << R"(

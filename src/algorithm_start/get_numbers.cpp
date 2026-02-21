@@ -34,23 +34,20 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
     std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << "\nand no less than: " << std::numeric_limits<unsigned long long>::min();
     
     std::cout << "\n>>> ";
-    std::cin.ignore();
 
     std::string input_string = "";
     std::getline(std::cin, input_string);
 
     if (input_string[input_string.size() - 1] != ' ') input_string.append(" "); //Для коррректной работы программы
-    if (input_string[0] == ' ') input_string.erase(0,1);
-
+    if (input_string[0] == ' ' || input_string[0] == '\n') input_string.erase(0,1); //2 условие нужно для предотвращение пропуска ввода
 
 
     std::vector<std::string> raw_result; // запись строк без лишнего в вектор для последующей проверки
-    while (input_string.find(" ") != std::string::npos) {
-
+    do {
         raw_result.push_back(input_string.substr(0, input_string.find(" ")));
         input_string = input_string.substr(input_string.find(" ") + 1, input_string.size() - 1);
-
     }
+    while (input_string.find(" ") != std::string::npos);
 
     if (search_mode == SEARCH_MODE::enumeration_mode && (raw_result.size()) % 2 == 1) raw_result.pop_back(); //если размер массива не кратен 2 
     if (raw_result.empty()) {
@@ -70,7 +67,7 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
         result.clear(); //Перезапись вектора
 
         for (int i = 0; i < vector_copy.size(); i += 2){ //+= 2 потому что включён enumeration_mode и там елементов кратно двум
-            for (int si = vector_copy[i]; si < vector_copy[i + 1]; si++) {
+            for (int si = vector_copy[i]; si <= vector_copy[i + 1]; si++) {
                 result.push_back(si);
             }
         }

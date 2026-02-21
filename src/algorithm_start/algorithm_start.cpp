@@ -8,12 +8,12 @@ std::vector<unsigned long long int> algorithm_start::launch(const std::vector<un
     std::vector<unsigned long long int> all_results; //Результат всех чисел из вектора
 
     for (unsigned long long int number : *numbers){
-
+        const unsigned long long int default_number = number;
         int cycle_counter = 0; //счётчик цикла
         while(number != 1) { //Когда станет 1 цикл пойдёт по кругу
             cycle_counter++;
             
-            std::cout << "[" << number << "] : " << "Cycle #" << cycle_counter << " ";
+            std::cout << "[" << default_number << "] : " << "Cycle #" << cycle_counter << " ";
             
             if (number % 2 == 1) number = (number * 3) + 1;
             else number = (number / 2);
