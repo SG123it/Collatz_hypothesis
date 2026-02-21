@@ -31,7 +31,7 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
     if you write numbers that not multiples of two program ignored number!
         )";
     }
-    std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << "\nand no less than: " << std::numeric_limits<unsigned long long>::min();
+    std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << " and no less than: " << std::numeric_limits<unsigned long long>::min();
     
     std::cout << "\n>>> ";
 
