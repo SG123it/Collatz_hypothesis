@@ -2,7 +2,7 @@
 #include <vector>
 #include <cmath>
 
-#include "headers/algorithm_start.hpp"
+#include "algorithm_start.hpp"
 
 std::vector<unsigned long long int> algorithm_start(const unsigned long long int *number){
     std::vector<unsigned long long int> result_history; //история результатов
