@@ -7,8 +7,9 @@
 #include "algorithm_start\algorithm_start.hpp"
 
 int main(){
-    unsigned long long int number = 0;
-    std::vector<unsigned long long int> results_history;
+    std::vector<unsigned long long int> numbers;
+    std::vector<unsigned long long int> all_results;
+    algorithm_start start;
 
     std::cout << "************************************************\n";
     std::cout << "https://github.com/SG123it/Collatz_hypothesis\n";
@@ -27,46 +28,31 @@ int main(){
             std::system("cls");
         #endif
 
-        try { //Если в ходе выполнения 2 функций ниже возникнет ошибка то программа перезапускается по нажатию клавиши
+
+        try { //Если в ходе выполнения функции ниже возникнет ошибка то программа перезапускается по нажатию клавиши
+
+            numbers = start.get_numbers();
+            all_results = start.launch(&numbers);
 
         }
         catch(...) {
-            std::cout << "Unknown error. Please press enter to restart";
+            std::cout << "Unknown error. Please press enter to restart\n";
             std::cin.ignore();
             std::cin.get();
         }
 
+        if (numbers.size() != all_results.size()) {
+            std::cout << "Error: numbers.size() != all_results.size()\nPlease press enter to restart\n";
+            std::cin.ignore();
+            std::cin.get();
+        }
         break;
 
     }
 
-    
-    char action = ' ';
-    while (true) {
-        std::cout << "\n\nProgram finished successful! Do you want to save results history to file?\n[1] - YES\n[2] - NO\n";
-        std::cout << ">>> ";
-        std::cin >> action;
-        if(std::cin.fail()) continue;
-        break;
-    }
-
-    //если action == '2' программа просто переходит в конец и выводит текст 'Thank you for using my program :)'
-    if (action == '1') {
-
-        std::fstream file("CH_results_history.txt", std::ios::out | std::ios::trunc);
-        if (!file.is_open()) {
-            std::cout << "Unable to open CH_results_history.txt";
-            return 1; //выход из программы
-        }
-            
-
-        file << "written number: " << number << std::endl;
-        for (unsigned long long int el : results_history) {
-            file << el << std::endl;
-        }
-
-        file.close();
-        std::cout << "File was saved to " << std::filesystem::absolute("./CH_results_history.txt").string();
+    std::cout << "All results: \n";
+    for (int i = 0; i < numbers.size(); i++) {
+        std::cout << "result[" << numbers[i] << "] : " << all_results[i];
     }
 
     std::cout << R"(

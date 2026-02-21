@@ -33,7 +33,7 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
     }
     std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << "\nand no less than: " << std::numeric_limits<unsigned long long>::min();
     
-    std::cout << ">>> ";
+    std::cout << "\n>>> ";
     std::cin.ignore();
 
     std::string input_string = "";
