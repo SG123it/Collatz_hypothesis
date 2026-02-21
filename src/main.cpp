@@ -16,18 +16,16 @@ int main(){
     std::cout << "Version: ";
 
     #ifdef PROGRAM_VERSION
-        std::cout << PROGRAM_VERSION;
+        std::cout << PROGRAM_VERSION << std::endl;
     #else
-        std::cout << "UNKNOWN";
+        std::cout << "UNKNOWN " << std::endl;
     #endif
+
+    std::cout << "Cycles limit: " << start.cycles_limit << std::endl;
 
     std::cout << "\n************************************************\n\n\n";
 
     while (true) {
-        #if defined(_WIN32) || defined(_WIN64)
-            std::system("cls");
-        #endif
-
 
         try { //Если в ходе выполнения функции ниже возникнет ошибка то программа перезапускается по нажатию клавиши
 
@@ -47,8 +45,11 @@ int main(){
             std::cin.ignore();
             std::cin.get();
         }
-        break;
 
+        #if defined(_WIN32) || defined(_WIN64)
+            std::system("cls");
+        #endif
+        break;
     }
 
     std::cout << "\n\n\n\n\n";
