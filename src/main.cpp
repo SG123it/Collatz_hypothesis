@@ -4,17 +4,40 @@
 #include <fstream>
 #include <filesystem>
 
-#include "get_number.hpp"
-#include "algorithm_start.hpp"
+#include "headers/get_number.hpp"
+#include "headers/algorithm_start.hpp"
 
 int main(){
     unsigned long long int number = 0;
     std::vector<unsigned long long int> results_history;
 
+    std::cout << "************************************************\n";
+    std::cout << "https://github.com/SG123it/Collatz_hypothesis\n";
+    std::cout << "Version: ";
 
-    std::cout << "\n| https://github.com/SG123it/Collatz_hypothesis |\n";
-    while (true) { //Если в ходе выполнения 2 функций ниже возникнет ошибка то программа перезапускается по нажатию клавиши
-        try {
+    #ifdef PROGRAM_VERSION
+        std::cout << PROGRAM_VERSION;
+    #else
+        std::cout << "UNKNOWN";
+    #endif
+
+    std::cout << "\n************************************************\n\n\n";
+
+    while (true) {
+        #if defined(_WIN32) || defined(_WIN64)
+            std::system("cls");
+        #endif
+
+        std::cout << R"(
+            -----------------------------------------------
+            | Please enter the number or numbers(natural) |
+            | Template: 10"                               |
+            | Template: 10 20 30                          |
+            -----------------------------------------------
+        )";
+        std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << "\nand no less than: " << std::numeric_limits<unsigned long long>::min();
+
+        try { //Если в ходе выполнения 2 функций ниже возникнет ошибка то программа перезапускается по нажатию клавиши
             number = get_number();
             results_history = algorithm_start(&number);
         }
@@ -56,10 +79,6 @@ int main(){
         file.close();
         std::cout << "File was saved to " << std::filesystem::absolute("./CH_results_history.txt").string();
     }
-
-    #if defined(_WIN32) || defined(_WIN64)
-        std::system("cls");
-    #endif
 
     std::cout << R"(
         -------------------------------------

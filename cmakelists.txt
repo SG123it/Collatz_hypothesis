@@ -1,5 +1,7 @@
+set(PROJECT_VERSION 1.1)
+
 cmake_minimum_required(VERSION 3.10...3.30)
-project(collatz_hypothesis VERSION 1.0)
+project(collatz_hypothesis VERSION ${PROJECT_VERSION})
 
 set(SRC
     src/main.cpp
@@ -8,3 +10,7 @@ set(SRC
 )
 
 add_executable(program ${SRC})
+
+target_compile_definitions(program PRIVATE
+    PROGRAM_VERSION=${PROJECT_VERSION}
+)
