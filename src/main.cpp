@@ -7,7 +7,7 @@
 #include "algorithm_start\algorithm_start.hpp"
 #include "arguments.hpp"
 
-int main(int argc, char* argv){
+int main(int argc, char* argv[]){
     std::vector<unsigned long long int> numbers;
     std::vector<unsigned long long int> all_results;
     algorithm_start start;
