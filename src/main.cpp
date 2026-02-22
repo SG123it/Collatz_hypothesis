@@ -8,8 +8,12 @@
 #include "arguments.hpp"
 
 int main(int argc, char* argv[]){
-    algorithm_start::all_program_return all_return_info;
+    algorithm_start::all_program_return all_return_info; //Хранит информацию о возврате
+    algorithm_start start; //Хранит настройки для запуска а также функции
     std::vector<unsigned long long> numbers;
+
+    arguments(argc, argv, start);
+    //--------------------------
 
     std::cout << "************************************************\n";
     std::cout << "https://github.com/SG123it/Collatz_hypothesis\n";
@@ -19,10 +23,12 @@ int main(int argc, char* argv[]){
     #else
         std::cout << "UNKNOWN " << std::endl;
     #endif
+    std::cout << "Search_mode = " << start.search_mode << std::endl;
+    std::cout << "Cycles_limit = " << start.cycles_limit << std::endl;
+    if (argc > 1) std::cout << "ARGV: ";
+    for (int i = 1; i < argc; i++) std::cout << argv[i] << " ";
     std::cout << "\n************************************************\n\n\n";
 
-    algorithm_start start;
-    start.search_mode = algorithm_start::SEARCH_MODE::enumeration_mode;
     while (true) {
 
         try { //Если в ходе выполнения функции ниже возникнет ошибка то программа перезапускается по нажатию клавиши

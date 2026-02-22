@@ -15,8 +15,8 @@ public:
     };
     
     enum SEARCH_MODE {
-        default_mode,
-        enumeration_mode
+        default_mode, //0
+        enumeration_mode //1
     };
     
     SEARCH_MODE search_mode = SEARCH_MODE::default_mode;
