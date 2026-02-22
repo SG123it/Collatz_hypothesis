@@ -30,7 +30,8 @@ If the number is odd, the next number is 3 times the previous one plus 1.<br>
 <h3><b>
 
 * search_mode= : set search_mode:<br>
-  0 - defau
+  0 - default<br>
+  1 - enumeration<br>
   template default: 10 12 - program checking numbers 10 and 12<br>
   template enumeration: 10 12 - program checking numbers from 10 to 12<br><br>
   
