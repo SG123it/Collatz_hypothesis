@@ -11,7 +11,6 @@
 <br><br>
 
 <h1>Arguments:</h1>
-<h2>Prefix: - or --</h2>
 <h3><b>
 
 * search_mode= : set search_mode:<br>
