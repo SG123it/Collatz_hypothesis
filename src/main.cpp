@@ -41,13 +41,11 @@ int main(int argc, char* argv[]){
         catch(...) {
             std::cout << "Unknown error. Please press enter to restart\n";
             std::cin.ignore();
-            std::cin.get();
         }
 
         if (numbers.size() != all_return_info.all_results.size() || all_return_info.all_results.size() != all_return_info.all_cycles.size()) {
             std::cout << "Error: numbers.size() != all_results.size()\nPlease press enter to restart\n";
             std::cin.ignore();
-            std::cin.get();
         }
 
         #if defined(_WIN32) || defined(_WIN64)
@@ -69,7 +67,6 @@ int main(int argc, char* argv[]){
     )";
     std::cout << "\nPress enter to exit";
     std::cin.ignore();
-    std::cin.get();
     return 0;
 
 }
