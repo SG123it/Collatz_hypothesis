@@ -3,6 +3,7 @@
 #include <limits>
 #include <fstream>
 #include <filesystem>
+#include <console_ui.hpp>
 
 #include "algorithm_start\algorithm_start.hpp"
 #include "arguments.hpp"
@@ -11,7 +12,7 @@ int main(int argc, char* argv[]){
     algorithm_start::all_program_return all_return_info; //Хранит информацию о возврате
     algorithm_start start; //Хранит настройки для запуска а также функции
     std::vector<unsigned long long> numbers;
-
+    
     arguments(argc, argv, start);
     //--------------------------
 

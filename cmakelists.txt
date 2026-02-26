@@ -3,6 +3,8 @@ set(PROJECT_VERSION 1.2)
 cmake_minimum_required(VERSION 3.10...3.30)
 project(collatz_hypothesis VERSION ${PROJECT_VERSION})
 
+include_directories(include/Console_UI/SRC)
+
 set(SRC
     src/main.cpp
     src/algorithm_start/get_numbers.cpp
@@ -15,3 +17,5 @@ add_executable(program ${SRC})
 target_compile_definitions(program PRIVATE
     PROGRAM_VERSION=${PROJECT_VERSION}
 )
+
+target_include_directories(program PRIVATE console_ui)
