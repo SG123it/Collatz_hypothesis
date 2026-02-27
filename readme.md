@@ -1,16 +1,3 @@
-<hr>
-<h3>
-<b>The program checks whether a number (or an array of numbers) confirms the Collatz hypothesis.</b><br><br><br>
-
-The hypothesis states that no matter which number the sequence starts with, it will eventually come down to the number 1. <br><br>
-
-This applies to integers, in which each number is derived from the previous one as follows: <br><br>
-if the number is even, then the next number is equal to its half;<br>
-If the number is odd, the next number is 3 times the previous one plus 1.<br>
-</h3>
-<hr>
-
-<br>
 
 <hr>
 <h3>

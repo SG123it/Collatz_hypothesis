@@ -15,20 +15,19 @@ int main(int argc, char* argv[]){
     
     arguments(argc, argv, start);
     //--------------------------
-
-    std::cout << "************************************************\n";
-    std::cout << "https://github.com/SG123it/Collatz_hypothesis\n";
-    std::cout << "Version: ";
+    console_UI::window_settings programinfo_UI;
+    programinfo_UI.title = "Program info";
+    programinfo_UI.text = "https://github.com/SG123it/Collatz_hypothesis\n";
     #ifdef PROGRAM_VERSION
-        std::cout << PROGRAM_VERSION << std::endl;
-    #else
-        std::cout << "UNKNOWN " << std::endl;
+        programinfo_UI.text += "Version: " + std::to_string(PROGRAM_VERSION) + "\n";
     #endif
-    std::cout << "Search_mode = " << start.search_mode << std::endl;
-    std::cout << "Cycles_limit = " << start.cycles_limit << std::endl;
-    if (argc > 1) std::cout << "ARGV: ";
-    for (int i = 1; i < argc; i++) std::cout << argv[i] << " ";
-    std::cout << "\n************************************************\n\n\n";
+    programinfo_UI.text += "Search_mode = " + std::to_string(start.search_mode) + "\n";
+    programinfo_UI.text += "Cycles_limit = " + std::to_string(start.cycles_limit) + "\n";
+    if (argc > 1) programinfo_UI.text += "ARGV: ";
+    for (int i = 1; i < argc; i++) programinfo_UI.text += std::string(argv[i]) + " ";
+
+    console_UI::window_print(programinfo_UI);
+    //--------------------------
 
     while (true) {
 
@@ -40,12 +39,12 @@ int main(int argc, char* argv[]){
 
         }
         catch(...) {
-            std::cout << "Unknown error. Please press enter to restart\n";
+            std::cerr << "Unknown error. Please press enter to restart\n";
             std::cin.ignore();
         }
 
         if (numbers.size() != all_return_info.all_results.size() || all_return_info.all_results.size() != all_return_info.all_cycles.size()) {
-            std::cout << "Error: numbers.size() != all_results.size()\nPlease press enter to restart\n";
+            std::cerr << "Error: numbers.size() != all_results.size()\nPlease press enter to restart\n";
             std::cin.ignore();
         }
 
@@ -61,11 +60,9 @@ int main(int argc, char* argv[]){
         std::cout << "result[" << numbers[i] << "] : " << all_return_info.all_results[i] << " : " << "For " << all_return_info.all_cycles[i] << " Cycles" << std::endl;
     }
 
-    std::cout << R"(
-        -------------------------------------
-        | Thank you for using my program :) |
-        -------------------------------------
-    )";
+    console_UI::window_settings Finish_text("Creator: https://github.com/SG123it", "Thank you for using my program :)");
+    console_UI::window_print(Finish_text);
+
     std::cout << "\nPress enter to exit";
     std::cin.ignore();
     return 0;

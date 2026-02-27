@@ -3,7 +3,7 @@ set(PROJECT_VERSION 1.2)
 cmake_minimum_required(VERSION 3.10...3.30)
 project(collatz_hypothesis VERSION ${PROJECT_VERSION})
 
-include_directories(include/Console_UI/SRC)
+add_subdirectory(include/Console_UI)
 
 set(SRC
     src/main.cpp
@@ -14,8 +14,8 @@ set(SRC
 
 add_executable(program ${SRC})
 
+target_link_libraries(program PRIVATE console_ui)
+
 target_compile_definitions(program PRIVATE
     PROGRAM_VERSION=${PROJECT_VERSION}
 )
-
-target_include_directories(program PRIVATE console_ui)

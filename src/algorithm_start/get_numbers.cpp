@@ -2,36 +2,25 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <console_ui.hpp>
 
 #include "algorithm_start.hpp"
 
 std::vector<unsigned long long int> algorithm_start::get_numbers() {
     std::vector<unsigned long long int> result;
-
+    console_UI::window_settings get_numbers_UI;
     if (search_mode == SEARCH_MODE::default_mode) {
-        std::cout << R"(
-                        ------------------
-                        |  Default mode  |
-            -----------------------------------------------
-            | Please enter the number or numbers(natural) |
-            | Template: 10"                               |
-            | Template: 10 20 30                          |
-            -----------------------------------------------
-        )";
+        get_numbers_UI.title = "Default mode";
     }
     else if (search_mode == SEARCH_MODE::enumeration_mode) {
-        std::cout << R"(
-                        ----------------------
-                        |  Enumeration mode  |
-            -----------------------------------------------
-            | Please enter the number or numbers(natural) |
-            | Template: 10"                               |
-            | Template: 10 20 30 40                       |
-            -----------------------------------------------
-    if you write numbers that not multiples of two program ignored number!
-        )";
+        get_numbers_UI.title = "Enumeration mode";
     }
-    std::cout << "P.S. every your number must be no more than: " << std::numeric_limits<unsigned long long>::max() << " and no less than: " << std::numeric_limits<unsigned long long>::min();
+    get_numbers_UI.text = R"(
+    Please enter the number or numbers(natural)
+    Template: 10
+    Template: 10 20 30 40)";
+    if (search_mode == SEARCH_MODE::enumeration_mode) get_numbers_UI.text += "\nif you write numbers that not multiples of two program ignored number!";
+    get_numbers_UI.text += "\nP.S. every your number must be no more than: " + std::to_string(std::numeric_limits<unsigned long long>::max()) + "\nand no less than: " + std::to_string(std::numeric_limits<unsigned long long>::min());
     
     std::cout << "\n>>> ";
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <console_ui.hpp>
 
 #include "algorithm_start.hpp"
 
