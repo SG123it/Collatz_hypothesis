@@ -31,6 +31,10 @@ Template: 10 20 30 40
     std::string input_string = "";
     std::getline(std::cin, input_string);
 
+    if (input_string.empty()) {
+        std::cerr << "Error: input_string is empty.\n";
+        throw "Error: input_string is empty.";
+    }
     if (input_string[input_string.size() - 1] != ' ') input_string.append(" "); //Для коррректной работы программы
     if (input_string[0] == ' ' || input_string[0] == '\n') input_string.erase(0,1); //2 условие нужно для предотвращение пропуска ввода
 

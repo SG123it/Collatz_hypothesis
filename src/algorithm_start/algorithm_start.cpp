@@ -1,14 +1,13 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 #include <console_ui.hpp>
 
 #include "algorithm_start.hpp"
 
-algorithm_start::all_program_return algorithm_start::launch(const std::vector<unsigned long long int> *numbers) {
+algorithm_start::all_program_return algorithm_start::launch(const std::vector<unsigned long long int> &numbers) {
     all_program_return return_info;
 
-    for (unsigned long long int number : *numbers){
+    for (unsigned long long int number : numbers){
 
         const unsigned long long int default_number = number; //Хранит изначальное число без изменений
         int cycle_counter = 0; //счётчик цикла
@@ -26,8 +25,8 @@ algorithm_start::all_program_return algorithm_start::launch(const std::vector<un
         std::cout << "\n\nFinal result: " << number << std::endl;
         std::cout << "For " << cycle_counter << " Cycles(to number 1)" << std::endl;
 
-        if (number == 1) std::cout << "Number: " << number << " : Does not confirm collatz hypothesis";
-        else std::cout << "Number: " << number << " : confirm collatz hypothesis";
+        if (number != 1) std::cout << "Number: " << number << " : confirms collatz hypothesis";
+        else std::cout << "Number: " << number << " : Does not confirm collatz hypothesis";
         
         return_info.default_numbers.push_back(default_number); //Запись изначального числа в вектор
         return_info.all_results.push_back(number); //Запись итогового числа в вектор

@@ -28,7 +28,7 @@ public:
 
     
     //Начать выполнение алгоритма : функция возвращает результаты алгоритма
-    all_program_return launch(const std::vector<unsigned long long int> *numbers);
+    all_program_return launch(const std::vector<unsigned long long int> &numbers);
     
     //Получить числа
     std::vector<unsigned long long int> get_numbers();

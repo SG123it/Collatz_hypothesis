@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
 
             numbers = start.get_numbers();
 
-            return_info = start.launch(&numbers);
+            return_info = start.launch(numbers);
 
         }
         catch(...) {
