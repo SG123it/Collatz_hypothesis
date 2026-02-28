@@ -45,11 +45,13 @@ int main(int argc, char* argv[]){
         catch(...) {
             std::cerr << "Unknown error. Please press enter to restart\n";
             std::cin.ignore();
+            continue;
         }
 
         if (return_info.default_numbers.size() != return_info.all_results.size() || return_info.all_results.size() != return_info.all_cycles.size() || return_info.all_cycles.size() != return_info.default_numbers.size()) {
             std::cerr << "Error: the sizes of the arrays do not match\nPlease press enter to restart\n";
             std::cin.ignore();
+            continue;
         }
         break;
     }
