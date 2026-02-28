@@ -16,25 +16,16 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
     else if (search_mode == SEARCH_MODE::enumeration_mode) {
         get_numbers_UI.title = "Enumeration mode";
     }
-    get_numbers_UI.text = R"(
-Please enter the number or numbers(natural)
-Template: 10
-Template: 10 20 30 40
-    )";
-    console_UI::window_print(get_numbers_UI);
+    get_numbers_UI.text = "Please enter the number or numbers(natural)\nTemplate: 10\nTemplate: 10 20 30 40\n\n";
 
-    if (search_mode == SEARCH_MODE::enumeration_mode) std::cout << "if you write numbers that not multiples of two program ignored number!";
-    std::cout << "\nP.S. every your number must be no more than: " + std::to_string(std::numeric_limits<unsigned long long>::max()) + " and no less than: " + std::to_string(std::numeric_limits<unsigned long long>::min());
-
-    std::cout << "\n>>> ";
-
-    std::string input_string = "";
-    std::getline(std::cin, input_string);
-
+    if (search_mode == SEARCH_MODE::enumeration_mode) get_numbers_UI.text += "if you write numbers that not multiples of two program ignored number!";
+    
+    std::string input_string = console_UI::window_print(get_numbers_UI, true);
     if (input_string.empty()) {
         std::cerr << "Error: input_string is empty.\n";
         throw "Error: input_string is empty.";
     }
+    
     if (input_string[input_string.size() - 1] != ' ') input_string.append(" "); //Для коррректной работы программы
     if (input_string[0] == ' ' || input_string[0] == '\n') input_string.erase(0,1); //2 условие нужно для предотвращение пропуска ввода
 
