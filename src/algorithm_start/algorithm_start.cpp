@@ -22,9 +22,11 @@ algorithm_start::all_program_return algorithm_start::launch(const std::vector<un
             std::cout << "[" << default_number << "] : " << "Cycle #" << cycle_counter << " ";
             if (number % 2 == 1){
                 if ((number * 3 + 1) > std::numeric_limits<unsigned long long int>::max()) {
+
                     std::cout << "ERROR: result of operation overloaded the buffer!";
                     buffer_overload = true;
                     break;
+                    
                 }
                 else {
                     number = (number * 3) + 1;

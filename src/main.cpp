@@ -17,11 +17,14 @@ int main(int argc, char* argv[]){
     console_UI::window_settings programinfo_UI;
     programinfo_UI.title = "Program info";
     programinfo_UI.text = "https://github.com/SG123it/Collatz_hypothesis\n";
+
     #ifdef PROGRAM_VERSION
         programinfo_UI.text += "Version: " + std::to_string(PROGRAM_VERSION) + "\n";
     #endif
+
     programinfo_UI.text += "Search_mode = " + std::to_string(start.search_mode) + "\n";
     programinfo_UI.text += "Cycles_limit = " + std::to_string(start.cycles_limit) + "\n";
+    
     if (argc > 1) programinfo_UI.text += "ARGV: ";
     for (int i = 1; i < argc; i++) programinfo_UI.text += std::string(argv[i]) + " ";
 

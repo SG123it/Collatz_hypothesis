@@ -10,14 +10,10 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
     std::vector<unsigned long long int> result;
 
     console_UI::window_settings get_numbers_UI;
-    if (search_mode == SEARCH_MODE::default_mode) {
-        get_numbers_UI.title = "Default mode";
-    }
-    else if (search_mode == SEARCH_MODE::enumeration_mode) {
-        get_numbers_UI.title = "Enumeration mode";
-    }
-    get_numbers_UI.text = "Please enter the number or numbers(natural)\nTemplate: 10\nTemplate: 10 20 30 40\n\n";
+    if (search_mode == SEARCH_MODE::default_mode) get_numbers_UI.title = "Default mode";
+    else if (search_mode == SEARCH_MODE::enumeration_mode) get_numbers_UI.title = "Enumeration mode";
 
+    get_numbers_UI.text = "Please enter the number or numbers(natural)\nTemplate: 10\nTemplate: 10 20 30 40\n\n";
     if (search_mode == SEARCH_MODE::enumeration_mode) get_numbers_UI.text += "if you write numbers that not multiples of two program ignored number!";
     
     std::string input_string = console_UI::window_print(get_numbers_UI, true);
@@ -32,13 +28,16 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
 
     std::vector<std::string> raw_result; // запись строк без лишнего в вектор для последующей проверки
     do {
+
         raw_result.push_back(input_string.substr(0, input_string.find(" ")));
         input_string = input_string.substr(input_string.find(" ") + 1, input_string.size() - 1);
+
     }
     while (input_string.find(" ") != std::string::npos);
 
     if (search_mode == SEARCH_MODE::enumeration_mode && (raw_result.size()) % 2 == 1) raw_result.pop_back(); //если размер массива не кратен 2 
     if (raw_result.empty()) {
+        
         std::cerr << "Error: Result is empty.\n";
         throw "Error: Result is empty.";
         
