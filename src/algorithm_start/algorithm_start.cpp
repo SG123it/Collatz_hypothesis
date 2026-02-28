@@ -28,7 +28,8 @@ algorithm_start::all_program_return algorithm_start::launch(const std::vector<un
 
         if (number == 1) std::cout << "Number: " << number << " : Does not confirm collatz hypothesis";
         else std::cout << "Number: " << number << " : confirm collatz hypothesis";
-
+        
+        return_info.default_numbers.push_back(default_number); //Запись изначального числа в вектор
         return_info.all_results.push_back(number); //Запись итогового числа в вектор
         return_info.all_cycles.push_back(cycle_counter); //Запись количества циклов в вектор
 

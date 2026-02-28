@@ -9,9 +9,8 @@
 #include "arguments.hpp"
 
 int main(int argc, char* argv[]){
-    algorithm_start::all_program_return all_return_info; //Хранит информацию о возврате
+    algorithm_start::all_program_return return_info; //Хранит информацию о возврате
     algorithm_start start; //Хранит настройки для запуска а также функции
-    std::vector<unsigned long long> numbers;
     
     arguments(argc, argv, start);
     //--------------------------
@@ -30,12 +29,17 @@ int main(int argc, char* argv[]){
     //--------------------------
 
     while (true) {
+        #if defined(_WIN32) || defined(_WIN64)
+            std::system("cls");
+        #endif
+
 
         try { //Если в ходе выполнения функции ниже возникнет ошибка то программа перезапускается по нажатию клавиши
+            std::vector<unsigned long long> numbers;
 
             numbers = start.get_numbers();
 
-            all_return_info = start.launch(&numbers);
+            return_info = start.launch(&numbers);
 
         }
         catch(...) {
@@ -43,24 +47,17 @@ int main(int argc, char* argv[]){
             std::cin.ignore();
         }
 
-        if (numbers.size() != all_return_info.all_results.size() || all_return_info.all_results.size() != all_return_info.all_cycles.size()) {
-            std::cerr << "Error: numbers.size() != all_results.size()\nPlease press enter to restart\n";
+        if (return_info.default_numbers.size() != return_info.all_results.size() || return_info.all_results.size() != return_info.all_cycles.size() || return_info.all_cycles.size() != return_info.default_numbers.size()) {
+            std::cerr << "Error: the sizes of the arrays do not match\nPlease press enter to restart\n";
             std::cin.ignore();
         }
-
-        #if defined(_WIN32) || defined(_WIN64)
-            std::system("cls");
-        #endif
         break;
     }
 
-    std::cout << "\n************************************************\n";
-    std::cout << "All results: \n\n";
-    for (int i = 0; i < numbers.size(); i++) {
-        std::cout << "result[" << numbers[i] << "] : " << all_return_info.all_results[i] << " : " << "For " << all_return_info.all_cycles[i] << " Cycles" << std::endl;
+    console_UI::window_settings Finish_text("Results");
+    for (int i = 0; i < return_info.default_numbers.size(); i++) {
+        Finish_text.text += "result[" + std::to_string(return_info.default_numbers[i]) + "] : " + std::to_string(return_info.all_results[i]) + " : " + "For " + std::to_string(return_info.all_cycles[i]) + " Cycles\n";
     }
-
-    console_UI::window_settings Finish_text("Creator: https://github.com/SG123it", "Thank you for using my program :)");
     console_UI::window_print(Finish_text);
 
     std::cout << "\nPress enter to exit";

@@ -9,8 +9,11 @@ public:
         //Все возвраты функции
         std::vector<unsigned long long int> all_results;
 
-        //Коли
+        //Количество циклов
         std::vector<unsigned long long int> all_cycles;
+
+        //изначальные числа
+        std::vector<unsigned long long int> default_numbers;
         
     };
     

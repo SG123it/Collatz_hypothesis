@@ -8,6 +8,7 @@
 
 std::vector<unsigned long long int> algorithm_start::get_numbers() {
     std::vector<unsigned long long int> result;
+
     console_UI::window_settings get_numbers_UI;
     if (search_mode == SEARCH_MODE::default_mode) {
         get_numbers_UI.title = "Default mode";
@@ -16,12 +17,15 @@ std::vector<unsigned long long int> algorithm_start::get_numbers() {
         get_numbers_UI.title = "Enumeration mode";
     }
     get_numbers_UI.text = R"(
-    Please enter the number or numbers(natural)
-    Template: 10
-    Template: 10 20 30 40)";
-    if (search_mode == SEARCH_MODE::enumeration_mode) get_numbers_UI.text += "\nif you write numbers that not multiples of two program ignored number!";
-    get_numbers_UI.text += "\nP.S. every your number must be no more than: " + std::to_string(std::numeric_limits<unsigned long long>::max()) + "\nand no less than: " + std::to_string(std::numeric_limits<unsigned long long>::min());
-    
+Please enter the number or numbers(natural)
+Template: 10
+Template: 10 20 30 40
+    )";
+    console_UI::window_print(get_numbers_UI);
+
+    if (search_mode == SEARCH_MODE::enumeration_mode) std::cout << "if you write numbers that not multiples of two program ignored number!";
+    std::cout << "\nP.S. every your number must be no more than: " + std::to_string(std::numeric_limits<unsigned long long>::max()) + " and no less than: " + std::to_string(std::numeric_limits<unsigned long long>::min());
+
     std::cout << "\n>>> ";
 
     std::string input_string = "";
